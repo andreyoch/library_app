@@ -1,5 +1,9 @@
+:root {
+   --orange:#f75f00;
+}
+
 .header {
-   background-color: #f75f00;
+   background-color: var(--orange);
    display: flex;
    justify-content: flex-end;
    min-height: 80px;
@@ -21,18 +25,6 @@
  
 }
 
-/* @media(max-width:476px) {
-   .search{
-      font-size: 25px;
-   }
-   
-}
-
-@media(max-width:392px) {
-   .search{
-      font-size: 20px;
-   }
-} */
 
 .content {
    max-width: 1080px;
@@ -46,9 +38,24 @@
 }
 
 i{
-   color:#f75f00;
+   color: var(--orange);
 }
 .logo-text {
-   color: #f75f00;
+   color: var(--orange);
 }
 
+.library-body {
+   display: grid;
+   grid-template-columns: repeat(4,1fr);
+   column-gap: 10px;
+   grid-auto-rows: minmax(200px,auto);
+   
+}
+.book-item {
+   padding: 10px;
+   border: 2px solid var(--orange);
+   border-radius: 10%;
+   font-size: 20px;
+}
+.book-field {
+}
