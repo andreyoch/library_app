@@ -15,12 +15,12 @@
 }
 
 .search {
-   background: url('../images/forge-icon.svg') no-repeat white;
-   margin-right: 30px;
-   border-radius: 20px;
-   border: 2px solid black;
+   height: 50px;
+   margin-right: 20px;
+   border-radius: 10px;
+   border: 2px solid white;
    font-size: 30px;
-   padding-left: 40px;
+   padding-left: 30px;
 
  
 }
