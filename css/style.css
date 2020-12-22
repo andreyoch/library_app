@@ -53,7 +53,7 @@ i{
 }
 .book-item {
    padding: 10px;
-   border: 2px solid var(--orange);
+   border: 3px solid var(--orange);
    border-radius: 10%;
    font-size: 20px;
 }
