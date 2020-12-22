@@ -33,3 +33,22 @@
       font-size: 20px;
    }
 } */
+
+.content {
+   max-width: 1080px;
+   margin: 0 auto;
+}
+
+.logo {
+   margin-top: 30px;
+   text-align: center;
+   font-size: 50px;
+}
+
+i{
+   color:#f75f00;
+}
+.logo-text {
+   color: #f75f00;
+}
+
