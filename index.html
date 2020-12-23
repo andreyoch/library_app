@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" type="favicon/svg" href="images/favicon.svg"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
     <title>Library app</title>
   </head>
   <body>
@@ -27,6 +29,21 @@
       </div>
       </div>
       <button class="add-btn">+</button>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <form action="/" class="form-modal">
+          <div class="title-modal"><label for="title">Title</label></div>
+          <input id="title"type="text" class="text-input">
+          <div class="title-modal"><label for="author">Author</label></div>
+          <input id="author"type="text" class="text-input">
+          <div class="title-modal"><label for="number-of-pages">Number of pages</label></div>
+          <input id="number-of-pages"type="number" class="text-input">
+          <div class="modal-btn"><button class="submit-btn">Add a book</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
     </div>
     <script src="https://kit.fontawesome.com/7d3f0bbab8.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
