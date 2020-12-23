@@ -45,9 +45,10 @@ i{
 }
 
 .library-body {
+   margin-top: 50px;
    display: grid;
    grid-template-columns: repeat(4,1fr);
-   column-gap: 10px;
+   gap: 10px;
    grid-auto-rows: minmax(200px,auto);
    
 }
@@ -59,3 +60,16 @@ i{
 }
 .book-field {
 }
+
+.add-btn {
+   font-size: 40px;
+   width: 50px;
+   border-radius: 50%;
+   position: fixed;
+   right: 150px;
+   bottom: 150px;
+   color: white;
+   background-color: var(--orange);
+   border-color: var(--orange);
+}
+
