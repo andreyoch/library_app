@@ -123,7 +123,7 @@ const searchBar = document.querySelector('.search');
 searchBar.addEventListener('keyup', search);
 
 function search(e) {
-  const userSearch = e.target.value;
+  const userSearch = e.target.value.toLowerCase();
   const bookItems = document.querySelectorAll('.book-item');
   bookItems.forEach(book => checkUserSearch(userSearch,book));
   
@@ -133,11 +133,11 @@ function search(e) {
 }
 
 function checkUserSearch(userSearch, book) {
-  const title = book.querySelector('#title').textContent;
-  const author = book.querySelector('#author').textContent;
-  const number = book.querySelector('#number-of-pages').textContent
+  const title = book.querySelector('#title').textContent.toLowerCase();
+  const author = book.querySelector('#author').textContent.toLowerCase();
+  const number = book.querySelector('#number-of-pages').textContent.toLowerCase()
   if (title.includes(userSearch) || author.includes(userSearch) || number.includes(userSearch)) {
-     book.style.display = 'block';
+     book.style.display = 'inline-block';
   } 
   else {
     book.style = 'display:none'
