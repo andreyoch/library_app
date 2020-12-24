@@ -40,6 +40,7 @@
 
 i{
    color: var(--orange);
+   margin-right: 5px;
 }
 .logo-text {
    color: var(--orange);
