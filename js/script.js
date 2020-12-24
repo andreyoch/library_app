@@ -25,7 +25,8 @@ window.onclick = function (event) {
 +3)Write a function,which render a array
 +4)Wite a function to validate user input
 +5)Write a search function
-6)Refactor code with classes
++6)Refactor code with classes
+
 */
 
 document.addEventListener('DOMContentLoaded', main);
@@ -157,15 +158,15 @@ function reciveDataFromUser() {
   modalBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const form = document.querySelector('.form-modal');
-    let title = form.querySelector('#title');
-    let author = form.querySelector('#author');
-    let numberOfPages = form.querySelector('#number-of-pages');
-    if (!title.value || !author.value || !numberOfPages.value) {
+    let title = form.querySelector('#title').value;
+    let author = form.querySelector('#author').value;
+    let numberOfPages = form.querySelector('#number-of-pages').value;
+    if (!title || !author || !numberOfPages) {
       UI.showAlert();
     } else {
       const modal = document.querySelector('.modal');
       modal.style.display = 'none';
-      let book = new Book(title.value, author.value, numberOfPages.value);
+      let book = new Book(title, author, numberOfPages);
       Repository.addBook(book);
       UI.renderBookRepository();
       UI.clearFields();
