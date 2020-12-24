@@ -59,6 +59,7 @@ class UI {
     modalContent.append(div);
     setTimeout(() => div.remove(), 3000);
   }
+
   static clearFields() {
     const form = document.querySelector('.form-modal');
     const title = form.querySelector('#title');
@@ -68,6 +69,27 @@ class UI {
     title.value = '';
     author.value = '';
     numberOfPages.value = '';
+  }
+
+  static search() {
+    const userInput = document.querySelector('.search').value.toLowerCase();
+    const bookItems = document.querySelectorAll('.book-item');
+    bookItems.forEach((book) => {
+      const title = book.querySelector('#title').textContent.toLowerCase();
+      const author = book.querySelector('#author').textContent.toLowerCase();
+      const number = book
+        .querySelector('#number-of-pages')
+        .textContent.toLowerCase();
+      if (
+        title.includes(userInput) ||
+        author.includes(userInput) ||
+        number.includes(userInput)
+      ) {
+        book.style.display = 'inline-block';
+      } else {
+        book.style = 'display:none';
+      }
+    });
   }
 }
 
@@ -141,27 +163,5 @@ function renderRepository() {
 
 const searchBar = document.querySelector('.search');
 
-searchBar.addEventListener('keyup', search);
+searchBar.addEventListener('keyup', UI.search);
 
-function search(e) {
-  const userSearch = e.target.value.toLowerCase();
-  const bookItems = document.querySelectorAll('.book-item');
-  bookItems.forEach((book) => checkUserSearch(userSearch, book));
-}
-
-function checkUserSearch(userSearch, book) {
-  const title = book.querySelector('#title').textContent.toLowerCase();
-  const author = book.querySelector('#author').textContent.toLowerCase();
-  const number = book
-    .querySelector('#number-of-pages')
-    .textContent.toLowerCase();
-  if (
-    title.includes(userSearch) ||
-    author.includes(userSearch) ||
-    number.includes(userSearch)
-  ) {
-    book.style.display = 'inline-block';
-  } else {
-    book.style = 'display:none';
-  }
-}
