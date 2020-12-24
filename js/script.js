@@ -18,17 +18,6 @@ window.onclick = function (event) {
   }
 };
 
-//TODO
-/*
-+1)Write a function,which collect data from user 
-+2)Write a function,which create a new Book and put into array
-+3)Write a function,which render a array
-+4)Wite a function to validate user input
-+5)Write a search function
-+6)Refactor code with classes
-
-*/
-
 document.addEventListener('DOMContentLoaded', main);
 
 class Book {
