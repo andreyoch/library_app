@@ -91,6 +91,21 @@ class UI {
       }
     });
   }
+
+  static createBookItem() {
+    const bookItem = document.createElement('div');
+    let title = document.createElement('div');
+    let author = document.createElement('div');
+    let numberOfPages = document.createElement('div');
+    bookItem.classList.add('book-item');
+    title.classList.add('book-field');
+    author.classList.add('book-field');
+    numberOfPages.classList.add('book-field');
+    title.setAttribute('id', 'title');
+    author.setAttribute('id', 'author');
+    numberOfPages.setAttribute('id', 'number-of-pages');
+
+  }
 }
 
 const repository = [];
