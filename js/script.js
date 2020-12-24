@@ -92,19 +92,44 @@ class UI {
     });
   }
 
-  static createBookItem() {
+  static createBookItem(title,author,numberOfPages) {
     const bookItem = document.createElement('div');
-    let title = document.createElement('div');
-    let author = document.createElement('div');
-    let numberOfPages = document.createElement('div');
+    let titleField = document.createElement('div');
+    let authorField = document.createElement('div');
+    let numberOfPagesField = document.createElement('div');
     bookItem.classList.add('book-item');
-    title.classList.add('book-field');
-    author.classList.add('book-field');
-    numberOfPages.classList.add('book-field');
-    title.setAttribute('id', 'title');
-    author.setAttribute('id', 'author');
-    numberOfPages.setAttribute('id', 'number-of-pages');
+    titleField.classList.add('book-field');
+    authorField.classList.add('book-field');
+    numberOfPagesField.classList.add('book-field');
+    titleField.setAttribute('id', 'title');
+    authorField.setAttribute('id', 'author');
+    numberOfPagesField.setAttribute('id', 'number-of-pages');
+    titleField.textContent = title;
+    authorField.textContent = author;
+    numberOfPagesField = numberOfPages;
+    
+    return bookItem;
+  }
 
+  static renderBookRepository() {
+    const libraryBody = document.querySelector('.library-body');
+    const repository = Storage.getBooks();
+    for (let i = 0; i < repository.length; i++) {
+      let title;
+      let author;
+      let numberOfPages;
+      for (key in repository[i]) {
+        if (key.includes('title')) {
+          title = repository[i][key];
+        } else if (key.includes('author')) {
+          author = repository[i][key];
+        } else {
+          numberOfPages = repository[i][key];
+        }
+      }
+      const bookItem = createBookItem(title, author, numberOfPages);
+      libraryBody.append(bookItem);
+    }
   }
 }
 
