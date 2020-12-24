@@ -52,7 +52,9 @@ function reciveDataFromUser() {
     let title = form.querySelector('#title');
     let author = form.querySelector('#author');
     let numberOfPages = form.querySelector('#number-of-pages');
-    if (checkUserInput(title.value, author.value, numberOfPages.value) ) {
+    if (checkUserInput(title.value, author.value, numberOfPages.value)) {
+      const modal = document.querySelector('.modal');
+      modal.style.display = 'none';
       createBook(title.value, author.value, numberOfPages.value);
 
       title.value = '';
