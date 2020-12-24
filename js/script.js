@@ -59,6 +59,16 @@ class UI {
     modalContent.append(div);
     setTimeout(() => div.remove(), 3000);
   }
+  static clearFields() {
+    const form = document.querySelector('.form-modal');
+    const title = form.querySelector('#title');
+    const author = form.querySelector('#author');
+    const numberOfPages = form.querySelector('#number-of-pages');
+
+    title.value = '';
+    author.value = '';
+    numberOfPages.value = '';
+  }
 }
 
 const repository = [];
@@ -76,16 +86,13 @@ function reciveDataFromUser() {
     let title = form.querySelector('#title');
     let author = form.querySelector('#author');
     let numberOfPages = form.querySelector('#number-of-pages');
-    if (!title.value|| !author.value|| !numberOfPages.value) {
+    if (!title.value || !author.value || !numberOfPages.value) {
       UI.showAlert();
     } else {
       const modal = document.querySelector('.modal');
       modal.style.display = 'none';
       createBook(title.value, author.value, numberOfPages.value);
-
-      title.value = '';
-      author.value = '';
-      numberOfPages.value = '';
+      UI.clearFields();
     }
   });
 }
@@ -113,7 +120,7 @@ function renderRepository() {
     title.classList.add('book-field');
     author.classList.add('book-field');
     numberOfPages.classList.add('book-field');
-    title.setAttribute('id', 'title')
+    title.setAttribute('id', 'title');
     author.setAttribute('id', 'author');
     numberOfPages.setAttribute('id', 'number-of-pages');
     for (key in repository[i]) {
@@ -139,22 +146,22 @@ searchBar.addEventListener('keyup', search);
 function search(e) {
   const userSearch = e.target.value.toLowerCase();
   const bookItems = document.querySelectorAll('.book-item');
-  bookItems.forEach(book => checkUserSearch(userSearch,book));
-  
-  
-
- 
+  bookItems.forEach((book) => checkUserSearch(userSearch, book));
 }
 
 function checkUserSearch(userSearch, book) {
   const title = book.querySelector('#title').textContent.toLowerCase();
   const author = book.querySelector('#author').textContent.toLowerCase();
-  const number = book.querySelector('#number-of-pages').textContent.toLowerCase()
-  if (title.includes(userSearch) || author.includes(userSearch) || number.includes(userSearch)) {
-     book.style.display = 'inline-block';
-  } 
-  else {
-    book.style = 'display:none'
+  const number = book
+    .querySelector('#number-of-pages')
+    .textContent.toLowerCase();
+  if (
+    title.includes(userSearch) ||
+    author.includes(userSearch) ||
+    number.includes(userSearch)
+  ) {
+    book.style.display = 'inline-block';
+  } else {
+    book.style = 'display:none';
   }
-   
 }
