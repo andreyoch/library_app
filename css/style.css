@@ -149,3 +149,14 @@ label{
    border:none;
    font-size: 20px;
 }
+
+.warning {
+   margin-top: 15px;
+   width: 100%;
+   font-size: 25px;
+   padding: 10px 0 10px 10px;
+   background-color: rgba(241, 186, 3, 0.787);
+   border-radius: 5px;
+   font-weight: 500;
+
+}

@@ -20,9 +20,10 @@ window.onclick = function (event) {
 
 //TODO
 /*
-1)Write a function,which collect data from user 
-2)Write a function,which create a new Book and put into array
-3)Write a function,which render a array
++1)Write a function,which collect data from user 
++2)Write a function,which create a new Book and put into array
++3)Write a function,which render a array
+4)Wite a function to validate user input
 */
 
 document.addEventListener('DOMContentLoaded', main);
@@ -50,11 +51,13 @@ function reciveDataFromUser() {
     let title = form.querySelector('#title');
     let author = form.querySelector('#author');
     let numberOfPages = form.querySelector('#number-of-pages');
-    createBook(title.value, author.value, numberOfPages.value);
+    if (checkUserInput(title.value, author.value, numberOfPages.value) ) {
+      createBook(title.value, author.value, numberOfPages.value);
 
-    title.value = '';
-    author.value = '';
-    numberOfPages.value = '';
+      title.value = '';
+      author.value = '';
+      numberOfPages.value = '';
+    }
   });
 }
 
@@ -95,4 +98,18 @@ function renderRepository() {
     bookItem.append(numberOfPages);
     libraryBody.append(bookItem);
   }
+}
+
+function checkUserInput(title, author, numberOfPages) {
+  if (title === '' || author === '' || numberOfPages === '') {
+    const showWarning = document.createElement('div');
+    showWarning.textContent = 'Please fill all fields!'
+    showWarning.classList.add('warning');
+    const modalContent = document.querySelector('.modal-content');
+    modalContent.append(showWarning);
+    setTimeout(() => showWarning.remove(), 3000);
+    return false;
+  } else {
+    return true;
+   }
 }
