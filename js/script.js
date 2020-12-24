@@ -23,7 +23,8 @@ window.onclick = function (event) {
 +1)Write a function,which collect data from user 
 +2)Write a function,which create a new Book and put into array
 +3)Write a function,which render a array
-4)Wite a function to validate user input
++4)Wite a function to validate user input
+5)Write a search function
 */
 
 document.addEventListener('DOMContentLoaded', main);
@@ -84,6 +85,9 @@ function renderRepository() {
     title.classList.add('book-field');
     author.classList.add('book-field');
     numberOfPages.classList.add('book-field');
+    title.setAttribute('id', 'title')
+    author.setAttribute('id', 'author');
+    numberOfPages.setAttribute('id', 'number-of-pages');
     for (key in repository[i]) {
       if (key.includes('title')) {
         title.textContent = repository[i][key];
@@ -112,4 +116,31 @@ function checkUserInput(title, author, numberOfPages) {
   } else {
     return true;
    }
+}
+
+const searchBar = document.querySelector('.search');
+
+searchBar.addEventListener('keyup', search);
+
+function search(e) {
+  const userSearch = e.target.value;
+  const bookItems = document.querySelectorAll('.book-item');
+  bookItems.forEach(book => checkUserSearch(userSearch,book));
+  
+  
+
+ 
+}
+
+function checkUserSearch(userSearch, book) {
+  const title = book.querySelector('#title').textContent;
+  const author = book.querySelector('#author').textContent;
+  const number = book.querySelector('#number-of-pages').textContent
+  if (title.includes(userSearch) || author.includes(userSearch) || number.includes(userSearch)) {
+     book.style.display = 'block';
+  } 
+  else {
+    book.style = 'display:none'
+  }
+   
 }
