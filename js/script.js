@@ -24,7 +24,8 @@ window.onclick = function (event) {
 +2)Write a function,which create a new Book and put into array
 +3)Write a function,which render a array
 +4)Wite a function to validate user input
-5)Write a search function
++5)Write a search function
+6)Refactor code with classes
 */
 
 document.addEventListener('DOMContentLoaded', main);
@@ -34,6 +35,29 @@ class Book {
     this.title = title;
     this.author = author;
     this.numberOfPages = numberOfPages;
+  }
+}
+
+class Storage {
+  static storage = [];
+
+  static getBooks() {
+    return storage;
+  }
+
+  static addBook(book) {
+    storage.push(book);
+  }
+}
+
+class UI {
+  static showAlert() {
+    const div = document.createElement('div');
+    div.textContent = 'Please fill all fields!';
+    div.classList.add('warning');
+    const modalContent = document.querySelector('.modal-content');
+    modalContent.append(div);
+    setTimeout(() => div.remove(), 3000);
   }
 }
 
@@ -52,7 +76,9 @@ function reciveDataFromUser() {
     let title = form.querySelector('#title');
     let author = form.querySelector('#author');
     let numberOfPages = form.querySelector('#number-of-pages');
-    if (checkUserInput(title.value, author.value, numberOfPages.value)) {
+    if (!title.value|| !author.value|| !numberOfPages.value) {
+      UI.showAlert();
+    } else {
       const modal = document.querySelector('.modal');
       modal.style.display = 'none';
       createBook(title.value, author.value, numberOfPages.value);
@@ -104,20 +130,6 @@ function renderRepository() {
     bookItem.append(numberOfPages);
     libraryBody.append(bookItem);
   }
-}
-
-function checkUserInput(title, author, numberOfPages) {
-  if (title === '' || author === '' || numberOfPages === '') {
-    const showWarning = document.createElement('div');
-    showWarning.textContent = 'Please fill all fields!'
-    showWarning.classList.add('warning');
-    const modalContent = document.querySelector('.modal-content');
-    modalContent.append(showWarning);
-    setTimeout(() => showWarning.remove(), 3000);
-    return false;
-  } else {
-    return true;
-   }
 }
 
 const searchBar = document.querySelector('.search');
