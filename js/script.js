@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', main);
 
 class Book {
   static bookId = 0;
+
   constructor(title, author, numberOfPages) {
     this.title = title;
     this.author = author;
@@ -30,7 +31,7 @@ class Book {
 
     Book.bookId++;
   }
- }
+}
 
 class Repository {
   static getBooks() {
@@ -55,12 +56,11 @@ class Repository {
     for (let i = 0; i < books.length; i++) {
       if (books[i]['id'] === bookId) {
         books.splice(i, 1);
+        break;
       }
     }
     localStorage.setItem('books', JSON.stringify(books));
 
-    //Decrement id
-    Book.bookId--;
   }
 }
 
@@ -112,7 +112,7 @@ class UI {
     const authorField = document.createElement('div');
     const numberOfPagesField = document.createElement('div');
     const idField = document.createElement('span');
-    const buttonContainer = document.createElement('div')
+    const buttonContainer = document.createElement('div');
     const deleteBtn = document.createElement('button');
     const editBtn = document.createElement('button');
 
@@ -134,12 +134,11 @@ class UI {
     idField.textContent = id;
     deleteBtn.innerHTML = '&times;';
     editBtn.innerHTML = '&#128394;';
-    
 
     // buttonContainer.append(editBtn);
     // buttonContainer.append(deleteBtn);
 
-     bookItem.append(deleteBtn);
+    bookItem.append(deleteBtn);
     bookItem.append(editBtn);
     // bookItem.append(buttonContainer);
     bookItem.append(titleField);
