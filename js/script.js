@@ -168,11 +168,24 @@ class UI {
     const books = document.querySelectorAll('.book-item');
     books.forEach((book) => book.remove());
   }
+  static removeBook(e) {
+    let bookItem = e.target.parentElement;
+    let bookId = bookItem.querySelector('.id-number').textContent;
+    console.log(bookId)
+    bookItem.remove();
+  }
+  static listenToDelete() {
+    let deleteBtns = document.querySelectorAll('.delete-btn');
+    deleteBtns.forEach((button) =>
+      button.addEventListener('click', UI.removeBook)
+    );
+  }
 }
 
 function main() {
   UI.renderBookRepository();
   reciveDataFromUser();
+  UI.listenToDelete();
 }
 
 function reciveDataFromUser() {
@@ -193,6 +206,7 @@ function reciveDataFromUser() {
       Repository.addBook(book);
       UI.renderBookRepository();
       UI.clearFields();
+      UI.listenToDelete();
     }
   });
 }
