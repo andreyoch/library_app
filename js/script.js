@@ -21,10 +21,29 @@ window.onclick = function (event) {
 document.addEventListener('DOMContentLoaded', main);
 
 class Book {
+  static idSet = new Set();
   constructor(title, author, numberOfPages) {
     this.title = title;
     this.author = author;
     this.numberOfPages = numberOfPages;
+    this.id = Book.createId();
+  }
+  //Create a unuqie id,method try to add number to set,if number not added-repeat
+  static createId() {
+    const oldIdsSetLength = Book.idSet.size;
+    let newIdsSetLength = Book.idSet.size;
+    let condition = true;
+    while (condition) {
+      let id = Math.floor(Math.random() * (5000 - 1 + 1)) + 1;
+      Book.idSet.add(id);
+      newIdsSetLength = Book.idSet.size;
+      if (oldIdsSetLength === newIdsSetLength) {
+        continue;
+      } else {
+        condition = false;
+        return id;
+      }
+    }
   }
 }
 
@@ -88,16 +107,20 @@ class UI {
     });
   }
 
-  static createBookItem(title, author, numberOfPages) {
+  static createBookItem(title, author, numberOfPages, id) {
     const bookItem = document.createElement('div');
     const titleField = document.createElement('div');
     const authorField = document.createElement('div');
     const numberOfPagesField = document.createElement('div');
+    const idField = document.createElement('span');
+    const deleteBtn = document.createElement('span');
 
     bookItem.classList.add('book-item');
     titleField.classList.add('book-field');
     authorField.classList.add('book-field');
     numberOfPagesField.classList.add('book-field');
+    idField.classList.add('id-number');
+    deleteBtn.classList.add('delete-btn');
 
     titleField.setAttribute('id', 'title');
     authorField.setAttribute('id', 'author');
@@ -106,10 +129,14 @@ class UI {
     titleField.textContent = title;
     authorField.textContent = author;
     numberOfPagesField.textContent = numberOfPages;
+    idField.textContent = id;
+    deleteBtn.innerHTML = '&times;';
 
+    bookItem.append(deleteBtn);
     bookItem.append(titleField);
     bookItem.append(authorField);
     bookItem.append(numberOfPagesField);
+    bookItem.append(idField);
 
     return bookItem;
   }
@@ -122,16 +149,19 @@ class UI {
       let title;
       let author;
       let numberOfPages;
+      let id;
       for (let key in repository[i]) {
         if (key.includes('title')) {
           title = repository[i][key];
         } else if (key.includes('author')) {
           author = repository[i][key];
-        } else {
+        } else if (key.includes('numberOfPages')) {
           numberOfPages = repository[i][key];
+        } else {
+          id = repository[i][key];
         }
       }
-      const bookItem = UI.createBookItem(title, author, numberOfPages);
+      const bookItem = UI.createBookItem(title, author, numberOfPages, id);
       libraryBody.append(bookItem);
     }
   }
@@ -143,7 +173,7 @@ class UI {
 }
 
 function main() {
-  UI.renderBookRepository()
+  UI.renderBookRepository();
   reciveDataFromUser();
 }
 

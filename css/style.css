@@ -60,11 +60,15 @@ i{
    border-radius: 10%;
    font-size: 20px;
 }
+
+
 .book-field {
    font-size: 30px;
    text-align: center;
    margin: 10px 0;
 }
+
+
 
 .add-btn {
    font-size: 40px;
@@ -160,3 +164,24 @@ label{
    font-weight: 500;
 
 }
+
+.id-number {
+   display: none;
+}
+
+.delete-btn {
+   color: #aaa;
+   font-size: 28px;
+   font-weight: bold;
+   margin-bottom: 10px;
+   float: right;
+   
+
+}
+
+ .delete-btn:hover,
+ .delete-btn:focus {
+   color: rgb(233, 9, 9);
+   text-decoration: none;
+   cursor: pointer;
+ }
