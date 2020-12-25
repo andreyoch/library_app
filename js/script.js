@@ -61,6 +61,17 @@ class Repository {
     books.push(book);
     localStorage.setItem('books', JSON.stringify(books));
   }
+  /*Take id from book-element on page and search in each book,if match-delete this item from localStorage*/
+  static removeBookFromRepository(bookId) {
+    bookId = Number.parseInt(bookId);
+    const books = Repository.getBooks();
+    for (let i = 0; i < books.length; i++) {
+      if (books[i]['id'] === bookId) {
+        books.splice(i, 1);
+      }
+    }
+    localStorage.setItem('books', JSON.stringify(books));
+  }
 }
 
 class UI {
@@ -171,7 +182,7 @@ class UI {
   static removeBook(e) {
     let bookItem = e.target.parentElement;
     let bookId = bookItem.querySelector('.id-number').textContent;
-    console.log(bookId)
+    Repository.removeBookFromRepository(bookId);
     bookItem.remove();
   }
   static listenToDelete() {
