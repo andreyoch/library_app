@@ -28,15 +28,13 @@ class Book {
     this.numberOfPages = numberOfPages;
     this.id = Book.createId();
   }
-  //Create a unuqie id,method try to add number to set,if number not added-repeat
+  //Create a unuqie id,method try to add number to set,if number exsist (not added)-repeat
   static createId() {
     const oldIdsSetLength = Book.idSet.size;
-    let newIdsSetLength = Book.idSet.size;
     let condition = true;
     while (condition) {
       let id = Math.floor(Math.random() * (5000 - 1 + 1)) + 1;
-      Book.idSet.add(id);
-      newIdsSetLength = Book.idSet.size;
+      let newIdsSetLength = Book.idSet.add(id);
       if (oldIdsSetLength === newIdsSetLength) {
         continue;
       } else {
