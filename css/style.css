@@ -175,8 +175,6 @@ label{
    font-weight: bold;
    margin-bottom: 10px;
    float: right;
-   
-
 }
 
  .delete-btn:hover,
@@ -185,3 +183,8 @@ label{
    text-decoration: none;
    cursor: pointer;
  }
+
+.edit-btn {
+   float: right;
+   padding-right: 3px;
+}

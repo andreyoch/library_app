@@ -21,29 +21,16 @@ window.onclick = function (event) {
 document.addEventListener('DOMContentLoaded', main);
 
 class Book {
-  static idSet = new Set();
+  static bookId = 0;
   constructor(title, author, numberOfPages) {
     this.title = title;
     this.author = author;
     this.numberOfPages = numberOfPages;
-    this.id = Book.createId();
+    this.id = Book.bookId;
+
+    Book.bookId++;
   }
-  //Create a unuqie id,method try to add number to set,if number exsist (not added)-repeat
-  static createId() {
-    const oldIdsSetLength = Book.idSet.size;
-    let condition = true;
-    while (condition) {
-      let id = Math.floor(Math.random() * (5000 - 1 + 1)) + 1;
-      let newIdsSetLength = Book.idSet.add(id);
-      if (oldIdsSetLength === newIdsSetLength) {
-        continue;
-      } else {
-        condition = false;
-        return id;
-      }
-    }
-  }
-}
+ }
 
 class Repository {
   static getBooks() {
@@ -71,6 +58,9 @@ class Repository {
       }
     }
     localStorage.setItem('books', JSON.stringify(books));
+
+    //Decrement id
+    Book.bookId--;
   }
 }
 
@@ -122,7 +112,9 @@ class UI {
     const authorField = document.createElement('div');
     const numberOfPagesField = document.createElement('div');
     const idField = document.createElement('span');
-    const deleteBtn = document.createElement('span');
+    const buttonContainer = document.createElement('div')
+    const deleteBtn = document.createElement('button');
+    const editBtn = document.createElement('button');
 
     bookItem.classList.add('book-item');
     titleField.classList.add('book-field');
@@ -130,6 +122,7 @@ class UI {
     numberOfPagesField.classList.add('book-field');
     idField.classList.add('id-number');
     deleteBtn.classList.add('delete-btn');
+    editBtn.classList.add('edit-btn');
 
     titleField.setAttribute('id', 'title');
     authorField.setAttribute('id', 'author');
@@ -140,8 +133,15 @@ class UI {
     numberOfPagesField.textContent = numberOfPages;
     idField.textContent = id;
     deleteBtn.innerHTML = '&times;';
+    editBtn.innerHTML = '&#128394;';
+    
 
-    bookItem.append(deleteBtn);
+    // buttonContainer.append(editBtn);
+    // buttonContainer.append(deleteBtn);
+
+     bookItem.append(deleteBtn);
+    bookItem.append(editBtn);
+    // bookItem.append(buttonContainer);
     bookItem.append(titleField);
     bookItem.append(authorField);
     bookItem.append(numberOfPagesField);
