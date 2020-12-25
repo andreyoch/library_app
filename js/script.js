@@ -29,15 +29,20 @@ class Book {
 }
 
 class Repository {
-  static repository = [];
-
   static getBooks() {
-    return this.repository;
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+    return books;
   }
 
   static addBook(book) {
-    const repository = this.getBooks();
-    repository.push(book);
+    const books = Repository.getBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
   }
 }
 
@@ -85,9 +90,9 @@ class UI {
 
   static createBookItem(title, author, numberOfPages) {
     const bookItem = document.createElement('div');
-    let titleField = document.createElement('div');
-    let authorField = document.createElement('div');
-    let numberOfPagesField = document.createElement('div');
+    const titleField = document.createElement('div');
+    const authorField = document.createElement('div');
+    const numberOfPagesField = document.createElement('div');
 
     bookItem.classList.add('book-item');
     titleField.classList.add('book-field');
@@ -105,7 +110,7 @@ class UI {
     bookItem.append(titleField);
     bookItem.append(authorField);
     bookItem.append(numberOfPagesField);
-  
+
     return bookItem;
   }
 
@@ -133,11 +138,12 @@ class UI {
 
   static removeBooksFromSite() {
     const books = document.querySelectorAll('.book-item');
-    books.forEach(book => book.remove());
+    books.forEach((book) => book.remove());
   }
 }
 
 function main() {
+  UI.renderBookRepository()
   reciveDataFromUser();
 }
 
