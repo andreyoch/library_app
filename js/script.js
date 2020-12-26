@@ -61,6 +61,26 @@ class Repository {
     }
     localStorage.setItem('books', JSON.stringify(books));
   }
+  /* Update info for book in Local Storage*/
+  static editBook(bookId, newTitle, newAuthor, newNumberOfPages) {
+    bookId = Number.parseInt(bookId);
+    const books = Repository.getBooks();
+    for (let i = 0; i < books.length; i++) {
+      if (books[i]['id'] === bookId) {
+        for (let key in books[i]) {
+          if (key === 'title') {
+            books[i][key] = newTitle;
+          } else if (key === 'author') {
+            books[i][key] = newAuthor;
+          } else {
+            books[i][key] = newNumberOfPages;
+          }
+         }
+        break;
+      }
+    }
+    localStorage.setItem('books', JSON.stringify(books));
+  }
 }
 
 class UI {
@@ -243,7 +263,9 @@ class UI {
         bookItem.querySelector(
           '#number-of-pages'
         ).textContent = newNumberOfPages;
-
+          
+        //Update info in repository 
+        Repository.editBook(bookId,newTitle,newAuthor,newNumberOfPages)
         //Close modal window after click on submit btn
         editModalWindow.style.display = 'none';
       }
