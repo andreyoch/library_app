@@ -289,18 +289,20 @@ function reciveDataFromUser() {
 
   modalBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    const libraryBody = document.querySelector('.library-body')
     const form = document.querySelector('.form-modal');
-    let title = form.querySelector('#title').value;
-    let author = form.querySelector('#author').value;
-    let numberOfPages = form.querySelector('#number-of-pages').value;
+    const title = form.querySelector('#title').value;
+    const author = form.querySelector('#author').value;
+    const numberOfPages = form.querySelector('#number-of-pages').value;
     if (!title || !author || !numberOfPages) {
       UI.showAlert('add');
     } else {
       const modal = document.querySelector('.modal');
       modal.style.display = 'none';
-      let book = new Book(title, author, numberOfPages);
+      const book = new Book(title, author, numberOfPages);
+      const bookHTMLItem = UI.createBookItem(book.title,book.author,book.numberOfPages,book.id)
       Repository.addBook(book);
-      UI.renderBookRepository();
+      libraryBody.append(bookHTMLItem)
       UI.clearFields();
       UI.listenToDelete();
       UI.listenToEditBook();
