@@ -60,7 +60,6 @@ class Repository {
       }
     }
     localStorage.setItem('books', JSON.stringify(books));
-
   }
 }
 
@@ -190,12 +189,57 @@ class UI {
       button.addEventListener('click', UI.removeBook)
     );
   }
+
+  static listenToEditBook() {
+    const editBtns = document.querySelectorAll('.edit-btn');
+    editBtns.forEach((button) =>
+      button.addEventListener('click', UI.showEditModal)
+    );
+  }
+
+  static showEditModal(e) {
+    const editModalWindow = document.querySelector('#edit-modal');
+    const bookItem = e.target.parentElement;
+    const bookId = bookItem.querySelector('.id-number').textContent;
+    const currentBookTitle = bookItem.querySelector('#title');
+    const currentBookAuthor = bookItem.querySelector('#author');
+    const currentBookNumberOfPages = bookItem.querySelector('#number-of-pages');
+    const editModalBtn = editModalWindow.querySelector('.modal-edit-btn');
+    const editModalTitle = editModalWindow.querySelector('#edit-title');
+    const editModalAuthor = editModalWindow.querySelector('#edit-author');
+    const editModalNumberOfPages = editModalWindow.querySelector(
+      '#edit-number-of-pages'
+    );
+
+    // Show in editModalWindow-current book info
+    editModalTitle.value = currentBookTitle.textContent;
+    editModalAuthor.value = currentBookAuthor.textContent;
+    editModalNumberOfPages.value = currentBookNumberOfPages.textContent;
+
+    //Show editModal window
+    editModalWindow.style.display = 'block';
+
+    editModalBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      //Collect provided info
+      const newTitle = editModalTitle.value;
+      const newAuthor = editModalAuthor.value;
+      const newNumberOfPages = editModalNumberOfPages.value;
+
+      //Change title on current book element to provided data
+      bookItem.querySelector('#title').textContent = newTitle;
+      bookItem.querySelector('#author').textContent = newAuthor;
+      bookItem.querySelector('#number-of-pages').textContent = newNumberOfPages;
+    });
+  }
 }
 
 function main() {
   UI.renderBookRepository();
   reciveDataFromUser();
   UI.listenToDelete();
+  UI.listenToEditBook();
 }
 
 function reciveDataFromUser() {
@@ -217,6 +261,7 @@ function reciveDataFromUser() {
       UI.renderBookRepository();
       UI.clearFields();
       UI.listenToDelete();
+      UI.listenToEditBook();
     }
   });
 }

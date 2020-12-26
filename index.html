@@ -25,6 +25,7 @@
       </div>
       </div>
       <button class="add-btn">+</button>
+      <!-- Modal window to add book -->
       <div id="myModal" class="modal">
         <div class="modal-content">
           <span class="close">&times;</span>
@@ -36,6 +37,21 @@
           <div class="title-modal"><label for="number-of-pages">Number of pages</label></div>
           <input id="number-of-pages"type="number" class="text-input">
           <div class="modal-btn"><button class="submit-btn">Add a book</button></div>
+          </form>
+        </div>
+      </div>
+      <!-- Modal window to edit book-->
+      <div id="edit-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <form action="/" class="form-modal">
+          <div class="title-modal"><label for="edit-title">Title</label></div>
+          <input id="edit-title"type="text" class="text-input">
+          <div class="title-modal"><label for="edit-author">Author</label></div>
+          <input id="edit-author"type="text" class="text-input">
+          <div class="title-modal"><label for="edit-number-of-pages">Number of pages</label></div>
+          <input id="edit-number-of-pages"type="number" class="text-input">
+          <div class="modal-edit"><button class="modal-edit-btn">Save changes</button></div>
           </form>
         </div>
       </div>
