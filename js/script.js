@@ -64,12 +64,17 @@ class Repository {
 }
 
 class UI {
-  static showAlert() {
+  static showAlert(typeOfModalWindow) {
+    let modalWindowContent;
+    if (typeOfModalWindow === 'add') {
+      modalWindowContent = document.querySelector('.modal-content');
+    } else {
+      modalWindowContent = document.querySelector('.modal-content-edit');
+    }
     const div = document.createElement('div');
     div.textContent = 'Please fill all fields!';
     div.classList.add('warning');
-    const modalContent = document.querySelector('.modal-content');
-    modalContent.append(div);
+    modalWindowContent.append(div);
     setTimeout(() => div.remove(), 3000);
   }
 
@@ -228,13 +233,20 @@ class UI {
       const newAuthor = editModalAuthor.value;
       const newNumberOfPages = editModalNumberOfPages.value;
 
-      //Change title on current book element to provided data
-      bookItem.querySelector('#title').textContent = newTitle;
-      bookItem.querySelector('#author').textContent = newAuthor;
-      bookItem.querySelector('#number-of-pages').textContent = newNumberOfPages;
+      //Check user input,if at least on field equals to nothing-show alert
+      if (newTitle === '' || newAuthor === '' || newNumberOfPages === '') {
+        UI.showAlert('edit');
+      } else {
+        //Change info on current book element to provided data
+        bookItem.querySelector('#title').textContent = newTitle;
+        bookItem.querySelector('#author').textContent = newAuthor;
+        bookItem.querySelector(
+          '#number-of-pages'
+        ).textContent = newNumberOfPages;
 
-      //Close modal window after click on submit btn
-      editModalWindow.style.display = 'none';
+        //Close modal window after click on submit btn
+        editModalWindow.style.display = 'none';
+      }
     });
 
     //If user click on close button,close modal window
@@ -262,7 +274,7 @@ function reciveDataFromUser() {
     let author = form.querySelector('#author').value;
     let numberOfPages = form.querySelector('#number-of-pages').value;
     if (!title || !author || !numberOfPages) {
-      UI.showAlert();
+      UI.showAlert('add');
     } else {
       const modal = document.querySelector('.modal');
       modal.style.display = 'none';
