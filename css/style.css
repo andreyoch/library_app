@@ -181,8 +181,9 @@ label{
    color: #aaa;
    font-size: 28px;
    font-weight: bold;
-   margin-bottom: 10px;
    float: right;
+   background-color: #fff;
+   border: none;
 }
 
  .delete-btn:hover,
@@ -193,6 +194,14 @@ label{
  }
 
 .edit-btn {
+   height: 38px;
    float: right;
    padding-right: 3px;
+   background-color: #fff;
+   border: none;
+}
+
+.buttons-container {
+   display: flex;
+   justify-content: flex-end;
 }

@@ -136,7 +136,7 @@ class UI {
     const authorField = document.createElement('div');
     const numberOfPagesField = document.createElement('div');
     const idField = document.createElement('span');
-    const buttonContainer = document.createElement('div');
+    const buttonsContainer = document.createElement('div');
     const deleteBtn = document.createElement('button');
     const editBtn = document.createElement('button');
 
@@ -147,6 +147,7 @@ class UI {
     idField.classList.add('id-number');
     deleteBtn.classList.add('delete-btn');
     editBtn.classList.add('edit-btn');
+    buttonsContainer.classList.add('buttons-container')
 
     titleField.setAttribute('id', 'title');
     authorField.setAttribute('id', 'author');
@@ -159,12 +160,9 @@ class UI {
     deleteBtn.innerHTML = '&times;';
     editBtn.innerHTML = '&#128394;';
 
-    // buttonContainer.append(editBtn);
-    // buttonContainer.append(deleteBtn);
-
-    bookItem.append(deleteBtn);
-    bookItem.append(editBtn);
-    // bookItem.append(buttonContainer);
+    buttonsContainer.append(editBtn);
+    buttonsContainer.append(deleteBtn);
+    bookItem.append(buttonsContainer);
     bookItem.append(titleField);
     bookItem.append(authorField);
     bookItem.append(numberOfPagesField);
@@ -174,7 +172,7 @@ class UI {
   }
 
   static renderBookRepository() {
-    this.removeBooksFromSite();
+     this.removeBooksFromSite();
     const libraryBody = document.querySelector('.library-body');
     const repository = Repository.getBooks();
     for (let i = 0; i < repository.length; i++) {
@@ -203,7 +201,7 @@ class UI {
     books.forEach((book) => book.remove());
   }
   static removeBook(e) {
-    let bookItem = e.target.parentElement;
+    let bookItem = e.target.parentElement.parentElement;
     let bookId = bookItem.querySelector('.id-number').textContent;
     Repository.removeBookFromRepository(bookId);
     bookItem.remove();
@@ -224,7 +222,7 @@ class UI {
 
   static showEditModal(e) {
     const editModalWindow = document.querySelector('#edit-modal');
-    const bookItem = e.target.parentElement;
+    const bookItem = e.target.parentElement.parentElement;
     const bookId = bookItem.querySelector('.id-number').textContent;
     const currentBookTitle = bookItem.querySelector('#title');
     const currentBookAuthor = bookItem.querySelector('#author');
