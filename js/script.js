@@ -210,6 +210,7 @@ class UI {
     const editModalNumberOfPages = editModalWindow.querySelector(
       '#edit-number-of-pages'
     );
+    const closeBtn = editModalWindow.querySelector('.close');
 
     // Show in editModalWindow-current book info
     editModalTitle.value = currentBookTitle.textContent;
@@ -231,7 +232,16 @@ class UI {
       bookItem.querySelector('#title').textContent = newTitle;
       bookItem.querySelector('#author').textContent = newAuthor;
       bookItem.querySelector('#number-of-pages').textContent = newNumberOfPages;
+
+      //Close modal window after click on submit btn
+      editModalWindow.style.display = 'none';
     });
+
+    //If user click on close button,close modal window
+    closeBtn.addEventListener(
+      'click',
+      (e) => (editModalWindow.style.display = 'none')
+    );
   }
 }
 
