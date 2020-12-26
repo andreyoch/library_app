@@ -72,7 +72,7 @@ class Repository {
             books[i][key] = newTitle;
           } else if (key === 'author') {
             books[i][key] = newAuthor;
-          } else {
+          } else if(key === 'numberOfPages') {
             books[i][key] = newNumberOfPages;
           }
          }
