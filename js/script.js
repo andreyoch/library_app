@@ -72,10 +72,10 @@ class Repository {
             books[i][key] = newTitle;
           } else if (key === 'author') {
             books[i][key] = newAuthor;
-          } else if(key === 'numberOfPages') {
+          } else if (key === 'numberOfPages') {
             books[i][key] = newNumberOfPages;
           }
-         }
+        }
         break;
       }
     }
@@ -147,7 +147,7 @@ class UI {
     idField.classList.add('id-number');
     deleteBtn.classList.add('delete-btn');
     editBtn.classList.add('edit-btn');
-    buttonsContainer.classList.add('buttons-container')
+    buttonsContainer.classList.add('buttons-container');
 
     titleField.setAttribute('id', 'title');
     authorField.setAttribute('id', 'author');
@@ -172,7 +172,7 @@ class UI {
   }
 
   static renderBookRepository() {
-     this.removeBooksFromSite();
+    this.removeBooksFromSite();
     const libraryBody = document.querySelector('.library-body');
     const repository = Repository.getBooks();
     for (let i = 0; i < repository.length; i++) {
@@ -243,31 +243,35 @@ class UI {
     //Show editModal window
     editModalWindow.style.display = 'block';
 
-    editModalBtn.addEventListener('click', (e) => {
-      e.preventDefault();
+    editModalBtn.addEventListener(
+      'click',
+      (e) => {
+        e.preventDefault();
 
-      //Collect provided info
-      const newTitle = editModalTitle.value;
-      const newAuthor = editModalAuthor.value;
-      const newNumberOfPages = editModalNumberOfPages.value;
+        //Collect provided info
+        const newTitle = editModalTitle.value;
+        const newAuthor = editModalAuthor.value;
+        const newNumberOfPages = editModalNumberOfPages.value;
 
-      //Check user input,if at least on field equals to nothing-show alert
-      if (newTitle === '' || newAuthor === '' || newNumberOfPages === '') {
-        UI.showAlert('edit');
-      } else {
-        //Change info on current book element to provided data
-        bookItem.querySelector('#title').textContent = newTitle;
-        bookItem.querySelector('#author').textContent = newAuthor;
-        bookItem.querySelector(
-          '#number-of-pages'
-        ).textContent = newNumberOfPages;
-          
-        //Update info in repository 
-        Repository.editBook(bookId,newTitle,newAuthor,newNumberOfPages)
-        //Close modal window after click on submit btn
-        editModalWindow.style.display = 'none';
-      }
-    },{once:true});
+        //Check user input,if at least on field equals to nothing-show alert
+        if (newTitle === '' || newAuthor === '' || newNumberOfPages === '') {
+          UI.showAlert('edit');
+        } else {
+          //Change info on current book element to provided data
+          bookItem.querySelector('#title').textContent = newTitle;
+          bookItem.querySelector('#author').textContent = newAuthor;
+          bookItem.querySelector(
+            '#number-of-pages'
+          ).textContent = newNumberOfPages;
+
+          //Update info in repository
+          Repository.editBook(bookId, newTitle, newAuthor, newNumberOfPages);
+          //Close modal window after click on submit btn
+          editModalWindow.style.display = 'none';
+        }
+      },
+      { once: true }
+    );
 
     //If user click on close button,close modal window
     closeBtn.addEventListener(
@@ -289,7 +293,7 @@ function reciveDataFromUser() {
 
   modalBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    const libraryBody = document.querySelector('.library-body')
+    const libraryBody = document.querySelector('.library-body');
     const form = document.querySelector('.form-modal');
     const title = form.querySelector('#title').value;
     const author = form.querySelector('#author').value;
@@ -300,9 +304,14 @@ function reciveDataFromUser() {
       const modal = document.querySelector('.modal');
       modal.style.display = 'none';
       const book = new Book(title, author, numberOfPages);
-      const bookHTMLItem = UI.createBookItem(book.title,book.author,book.numberOfPages,book.id)
+      const bookHTMLItem = UI.createBookItem(
+        book.title,
+        book.author,
+        book.numberOfPages,
+        book.id
+      );
       Repository.addBook(book);
-      libraryBody.append(bookHTMLItem)
+      libraryBody.append(bookHTMLItem);
       UI.clearFields();
       UI.listenToDelete();
       UI.listenToEditBook();
