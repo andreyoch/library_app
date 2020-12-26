@@ -269,7 +269,7 @@ class UI {
         //Close modal window after click on submit btn
         editModalWindow.style.display = 'none';
       }
-    });
+    },{once:true});
 
     //If user click on close button,close modal window
     closeBtn.addEventListener(
