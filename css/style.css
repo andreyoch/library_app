@@ -1,264 +1,271 @@
 :root {
-   --orange:#f75f00;
-   font-family: 'Roboto Slab', serif;
+    --orange: #f75f00;
+    font-family: 'Roboto Slab', serif;
 }
 
 .header {
-   background-color: var(--orange);
-   display: flex;
-   justify-content: flex-end;
-   min-height: 80px;
-   align-items: center;
+    background-color: var(--orange);
+    display: flex;
+    justify-content: flex-end;
+    min-height: 80px;
+    align-items: center;
 }
 
-.search-bar{
-   display: flex;
+.search-bar {
+    display: flex;
 }
 
 .search {
-   height: 50px;
-   margin-right: 20px;
-   border-radius: 10px;
-   border: 2px solid white;
-   font-size: 30px;
-   padding-left: 30px;
+    height: 50px;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: 2px solid white;
+    font-size: 30px;
+    padding-left: 30px;
 }
+
 .search-small {
-   display: none;
-   height: 50px;
-   margin-right: 20px;
-   border-radius: 10px;
-   border: 2px solid white;
-   font-size: 30px;
-   padding-left: 30px;
+    display: none;
+    height: 50px;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: 2px solid white;
+    font-size: 30px;
+    padding-left: 30px;
 }
 
 .content {
-   max-width: 1080px;
-   margin: 0 auto;
+    max-width: 1080px;
+    margin: 0 auto;
 }
 
 .logo {
-   margin-top: 30px;
-   text-align: center;
-   font-size: 50px;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 50px;
 }
 
-i{
-   color: var(--orange);
-   margin-right: 5px;
+i {
+    color: var(--orange);
+    margin-right: 5px;
 }
+
 .logo-text {
-   color: var(--orange);
+    color: var(--orange);
 }
 
 .library-body {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
 .book-item {
-   margin: 10px 10px 0 10px;
-   flex: 0 0 200px;
-   padding: 20px;
-   border: 3px solid var(--orange);
-   border-radius: 10%;
-   font-size: 20px;
-   overflow: auto;
+    margin: 10px 10px 0 10px;
+    flex: 0 0 200px;
+    padding: 20px;
+    border: 3px solid var(--orange);
+    border-radius: 10%;
+    font-size: 20px;
+    overflow: auto;
 }
 
 
 .book-field {
-   font-size: 30px;
-   text-align: center;
-   margin: 10px 0;
+    font-size: 30px;
+    text-align: center;
+    margin: 10px 0;
 }
-
 
 
 .add-btn {
-   font-size: 40px;
-   width: 50px;
-   border-radius: 50%;
-   position: fixed;
-   right: 150px;
-   bottom: 150px;
-   color: white;
-   background-color: var(--orange);
-   border:none;
-   
+    font-size: 40px;
+    width: 50px;
+    border-radius: 50%;
+    position: fixed;
+    right: 150px;
+    bottom: 150px;
+    color: white;
+    background-color: var(--orange);
+    border: none;
+
 }
 
 .modal {
-   display: none; 
-   position: fixed; 
-   z-index: 1; 
-   left: 0;
-   top: 0;
-   width: 100%; 
-   height: 100%; 
-   overflow: auto; 
-   background-color: rgb(0,0,0); 
-   background-color: rgba(0,0,0,0.4); 
- }
- 
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
 
- .modal-content{
-   background-color: #fefefe;
-   margin: 15% auto; 
-   padding: 20px;
-   border: 1px solid #888;
-   width: 30%; 
- }
 
-  .modal-content-edit{
-   background-color: #fefefe;
-   margin: 15% auto; 
-   padding: 20px;
-   border: 1px solid #888;
-   width: 30%; 
- }
- 
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+}
 
- .close {
-   color: #aaa;
-   float: right;
-   font-size: 28px;
-   font-weight: bold;
- }
- 
- .close:hover,
- .close:focus {
-   color: black;
-   text-decoration: none;
-   cursor: pointer;
- }
+.modal-content-edit {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+}
 
- .text-input {
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.text-input {
     min-width: 100%;
     max-width: 100%;
     height: 30px;
-    border:2px solid black
- }
+    border: 2px solid black
+}
 
 .title-modal {
 
 }
 
-label{
-   display: inline-block;
-   margin:15px 0;
-   font-size: 30px;
+label {
+    display: inline-block;
+    margin: 15px 0;
+    font-size: 30px;
 }
 
-.modal-btn,.modal-edit {
-   margin-top: 10px;
-   text-align: center;
+.modal-btn, .modal-edit {
+    margin-top: 10px;
+    text-align: center;
 }
 
-.submit-btn,.modal-edit-btn {
-   min-width: 60%;
-   max-width: 60%;
-   color: white;
-   background-color: var(--orange);
-   height: 40px;
-   border-radius: 4px;
-   font-weight: 700;
-   border:none;
-   font-size: 18px;
-   min-width: 100%;
+.submit-btn, .modal-edit-btn {
+    min-width: 60%;
+    max-width: 60%;
+    color: white;
+    background-color: var(--orange);
+    height: 40px;
+    border-radius: 4px;
+    font-weight: 700;
+    border: none;
+    font-size: 18px;
+    min-width: 100%;
 }
 
 .warning {
-   margin-top: 15px;
-   width: 100%;
-   font-size: 25px;
-   padding: 10px 0 10px 10px;
-   background-color: rgba(241, 186, 3, 0.787);
-   border-radius: 5px;
-   font-weight: 500;
+    margin-top: 15px;
+    width: 100%;
+    font-size: 25px;
+    padding: 10px 0 10px 10px;
+    background-color: rgba(241, 186, 3, 0.787);
+    border-radius: 5px;
+    font-weight: 500;
 
 }
 
 .id-number {
-   display: none;
+    display: none;
 }
 
 .delete-btn {
-   color: #aaa;
-   font-size: 28px;
-   font-weight: bold;
-   float: right;
-   background-color: #fff;
-   border: none;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    float: right;
+    background-color: #fff;
+    border: none;
 }
 
- .delete-btn:hover,
- .delete-btn:focus {
-   color: rgb(233, 9, 9);
-   text-decoration: none;
-   cursor: pointer;
- }
+.delete-btn:hover,
+.delete-btn:focus {
+    color: rgb(233, 9, 9);
+    text-decoration: none;
+    cursor: pointer;
+}
 
 .edit-btn {
-   height: 38px;
-   float: right;
-   padding-right: 3px;
-   background-color: #fff;
-   border: none;
+    height: 38px;
+    float: right;
+    padding-right: 3px;
+    background-color: #fff;
+    border: none;
 }
 
 .buttons-container {
-   display: flex;
-   justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 
 @media (max-width: 445px) {
-   .modal-edit-btn,.submit-btn {
-      font-size: 15px;
-   }
-    
-   .search-bar {
-      width: 90%;
-   }
-   .search {
-      width: 100%;
-      font-size: 20px;
-   }
+    .modal-edit-btn, .submit-btn {
+        font-size: 15px;
+    }
+
+    .search-bar {
+        width: 90%;
+    }
+
+    .search {
+        width: 100%;
+        font-size: 20px;
+    }
 }
 
-@media(max-width:319px) {
-   label {
-      font-size: 25px;
-   }
-}
-@media(max-width:256px) {
-   
-   .logo {
-      font-size: 40px;
-   }
+@media (max-width: 319px) {
+    label {
+        font-size: 25px;
+    }
 }
 
-@media(max-width:235px) {
-   .book-item {
-     flex: 1 1 100px;
-   }
+@media (max-width: 256px) {
+
+    .logo {
+        font-size: 40px;
+    }
 }
 
-@media(max-width:205px) {
-   .logo {
-      font-size: 30px;
-   }
-   .search-small {
-      display: inline;
-      width: 100%;
-      font-size: 20px;
-   }
-   .search {
-      display: none;
-   }
-   .search-bar {
-      width: 90%;
-   }
+@media (max-width: 235px) {
+    .book-item {
+        flex: 1 1 100px;
+    }
+}
+
+@media (max-width: 205px) {
+    .logo {
+        font-size: 30px;
+    }
+
+    .search-small {
+        display: inline;
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .search {
+        display: none;
+    }
+
+    .search-bar {
+        width: 90%;
+    }
 }

@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/style.css" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
     <link rel="shortcut icon" type="favicon/svg" href="images/favicon.svg"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
     <title>Library app</title>
-  </head>
-  <body>
-    <header class="header">
-      <div class="search-bar">
-        <input type="text" class="search" placeholder="Search a book" />
-        <input type="text" class="search-small" placeholder="Search" />
-      </div>
-    </header>
-    <div class="container">
-      <div class="content">
+</head>
+<body>
+<header class="header">
+    <div class="search-bar">
+        <input type="text" class="search" placeholder="Search a book"/>
+        <input type="text" class="search-small" placeholder="Search"/>
+    </div>
+</header>
+<div class="container">
+    <div class="content">
         <h1 class="logo">
-          <i class="fas fa-book"></i><span class="logo-text"></i>My</span>Library
-       </h1>
-       <div class="library-body">
-      </div>
-      </div>
-      <button class="add-btn">+</button>
-      <!-- Modal window to add book -->
-      <div id="myModal" class="modal">
+            <i class="fas fa-book"></i><span class="logo-text"></i>My</span>Library
+        </h1>
+        <div class="library-body">
+        </div>
+    </div>
+    <button class="add-btn">+</button>
+    <!-- Modal window to add book -->
+    <div id="myModal" class="modal">
         <div class="modal-content">
-          <span class="close">&times;</span>
-          <form action="/" class="form-modal">
-          <div class="title-modal"><label for="title">Title</label></div>
-          <input id="title"type="text" class="text-input">
-          <div class="title-modal"><label for="author">Author</label></div>
-          <input id="author"type="text" class="text-input">
-          <div class="title-modal"><label for="number-of-pages">Number of pages</label></div>
-          <input id="number-of-pages"type="number" class="text-input">
-          <div class="modal-btn"><button class="submit-btn">Add a book</button></div>
-          </form>
+            <span class="close">&times;</span>
+            <form action="/" class="form-modal">
+                <div class="title-modal"><label for="title">Title</label></div>
+                <input id="title" type="text" class="text-input">
+                <div class="title-modal"><label for="author">Author</label></div>
+                <input id="author" type="text" class="text-input">
+                <div class="title-modal"><label for="number-of-pages">Number of pages</label></div>
+                <input id="number-of-pages" type="number" class="text-input">
+                <div class="modal-btn">
+                    <button class="submit-btn">Add a book</button>
+                </div>
+            </form>
         </div>
-      </div>
-      <!-- Modal window to edit book-->
-      <div id="edit-modal" class="modal">
+    </div>
+    <!-- Modal window to edit book-->
+    <div id="edit-modal" class="modal">
         <div class="modal-content-edit">
-          <span class="close">&times;</span>
-          <form action="/" class="form-modal">
-          <div class="title-modal"><label for="edit-title">Title</label></div>
-          <input id="edit-title"type="text" class="text-input">
-          <div class="title-modal"><label for="edit-author">Author</label></div>
-          <input id="edit-author"type="text" class="text-input">
-          <div class="title-modal"><label for="edit-number-of-pages">Number of pages</label></div>
-          <input id="edit-number-of-pages"type="number" class="text-input">
-          <div class="modal-edit"><button class="modal-edit-btn">Save changes</button></div>
-          </form>
+            <span class="close">&times;</span>
+            <form action="/" class="form-modal">
+                <div class="title-modal"><label for="edit-title">Title</label></div>
+                <input id="edit-title" type="text" class="text-input">
+                <div class="title-modal"><label for="edit-author">Author</label></div>
+                <input id="edit-author" type="text" class="text-input">
+                <div class="title-modal"><label for="edit-number-of-pages">Number of pages</label></div>
+                <input id="edit-number-of-pages" type="number" class="text-input">
+                <div class="modal-edit">
+                    <button class="modal-edit-btn">Save changes</button>
+                </div>
+            </form>
         </div>
-      </div>
     </div>
-    </div>
-    <script src="https://kit.fontawesome.com/7d3f0bbab8.js" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
-  </body>
+</div>
+</div>
+<script src="https://kit.fontawesome.com/7d3f0bbab8.js" crossorigin="anonymous"></script>
+<script src="js/script.js"></script>
+</body>
 </html>
