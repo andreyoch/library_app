@@ -21,15 +21,36 @@ window.onclick = function (event) {
 document.addEventListener('DOMContentLoaded', main);
 
 class Book {
-    static bookId = 0;
 
     constructor(title, author, numberOfPages) {
         this.title = title;
         this.author = author;
         this.numberOfPages = numberOfPages;
-        this.id = Book.bookId;
+        this.id = Book.createBookId();
+    }
 
-        Book.bookId++;
+    static createBookId() {
+        const books = Repository.getBooks();
+        let set = new Set();
+        for (let key in books) {
+            if (key === 'id') {
+                set.add(books[key]);
+            }
+        }
+        const setOldSize = set.size;
+        let setNewSize;
+        let condition = true;
+        while (condition) {
+            let id = Math.floor((Math.random() * 10000) + 1)
+            setNewSize = set.add(id).size;
+            if (setOldSize === setNewSize) {
+                continue;
+            } else {
+                condition = false;
+                return id;
+            }
+        }
+
     }
 }
 
