@@ -105,22 +105,14 @@ i {
 }
 
 
-.modal-content {
+.modal-content,.modal-content-edit{
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 30%;
+    min-width: 300px;
 }
-
-.modal-content-edit {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 30%;
-}
-
 
 .close {
     color: #aaa;
@@ -159,7 +151,6 @@ label {
 }
 
 .submit-btn, .modal-edit-btn {
-    min-width: 60%;
     max-width: 60%;
     color: white;
     background-color: var(--orange);
@@ -217,10 +208,6 @@ label {
 
 
 @media (max-width: 445px) {
-    .modal-edit-btn, .submit-btn {
-        font-size: 15px;
-    }
-
     .search-bar {
         width: 90%;
     }
@@ -231,14 +218,26 @@ label {
     }
 }
 
+
+@media(max-width: 358px) {
+    .modal-content,.modal-content-edit {
+       min-width: 200px;
+    }
+}
+
 @media (max-width: 319px) {
     label {
         font-size: 25px;
     }
+    .modal-edit-btn, .submit-btn {
+        font-size: 15px;
+    }
 }
 
 @media (max-width: 256px) {
-
+    .modal-content,.modal-content-edit {
+        min-width: 150px;
+    }
     .logo {
         font-size: 40px;
     }
