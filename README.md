@@ -3,7 +3,7 @@
 Library App is web page,where you can save,edit and delete your books
 
 ## How to start
-To start please click on the <a href="andreyoch.github.io/library_app/">link</a> 
+To start please click on the <a href="https://andreyoch.github.io/library_app/">link</a> 
 
 
 ## Contributing
