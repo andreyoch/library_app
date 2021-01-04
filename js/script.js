@@ -287,12 +287,12 @@ class UI {
 
 function main() {
     UI.renderBookRepository();
-    reciveDataFromUser();
+    receiveDataFromUser();
     UI.listenToDelete();
     UI.listenToEditBook();
 }
 
-function reciveDataFromUser() {
+function receiveDataFromUser() {
     const modalBtn = document.querySelector('.submit-btn');
 
     modalBtn.addEventListener('click', (e) => {
